@@ -1,0 +1,14 @@
+{
+    "manifest_version": 2,
+    "name": "Insta Raffle",
+    "description": "Play prizes using comments in Instagram",
+    "version": "0.1",
+    "permissions": ["tabs", "<all_urls>"],
+    "browser_action":{
+        "default_icon": "128.png",
+        "default_popup": "popup.html"
+    },
+    "icons": {
+    "128": "128.png"
+    }
+    }
