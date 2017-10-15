@@ -5,6 +5,10 @@ function clickLoadMoreComments() {
         loadMoreCommentsButton.click();
         }
         timerId = setTimeout(clickAgain, 1000);
-      }, 1000);
+        if (!document.body.contains(loadMoreCommentsButton)){
+            clearTimeout(timerId);
+            alert(document.getElementsByClassName("_ezgzd").length - 1);
+        }
+      });
 }
 clickLoadMoreComments();
