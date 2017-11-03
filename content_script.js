@@ -7,7 +7,8 @@ function clickLoadMoreComments() {
         timerId = setTimeout(clickAgain, 1000);
         if (!document.body.contains(loadMoreCommentsButton)){
             clearTimeout(timerId);
-            //alert(document.getElementsByClassName("_ezgzd").length - 1);
+            chrome.runtime.sendMessage({commentsCount: 
+                (document.getElementsByClassName("_ezgzd").length-1).toString()});
         }
       });
 }
@@ -17,7 +18,6 @@ function randomInteger(min, max) {
     rand = Math.round(rand);
     return rand;
 }
-
 function getRandomComment(){
     var comments = document.getElementsByClassName("_ezgzd");
     var commentsCount = comments.length - 1;
