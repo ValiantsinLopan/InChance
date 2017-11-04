@@ -4,9 +4,10 @@ function injectTheScript() {
         
     });
 }
-
-chrome.runtime.onMessage.addListener(
-    function(request, sender, sendResponse) {
-      alert(request.commentsCount);
+chrome.runtime.onConnect.addListener(function(port) {
+    port.onMessage.addListener(function(msg) {
+        alert(msg.commentsCount);
     });
+  });
+  
 document.getElementById('loadcomments').addEventListener('click', injectTheScript);

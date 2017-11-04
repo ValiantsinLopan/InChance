@@ -1,3 +1,12 @@
+var port = chrome.runtime.connect();
+
+port.onMessage.addListener(function(msg) {
+    if (msg.question == "Who's there?")
+      port.postMessage({answer: "Madame"});
+    else if (msg.question == "Madame who?")
+      port.postMessage({answer: "Madame... Bovary"});
+  });
+
 function clickLoadMoreComments() {
     var loadMoreCommentsButton = document.getElementsByClassName("_m3m1c _1s3cd")[0];
     var timerId = setTimeout(function clickAgain() {
@@ -7,7 +16,7 @@ function clickLoadMoreComments() {
         timerId = setTimeout(clickAgain, 1000);
         if (!document.body.contains(loadMoreCommentsButton)){
             clearTimeout(timerId);
-            chrome.runtime.sendMessage({commentsCount: 
+            port.postMessage({commentsCount: 
                 (document.getElementsByClassName("_ezgzd").length-1).toString()});
         }
       });
