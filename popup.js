@@ -6,8 +6,9 @@ function injectTheScript() {
 }
 chrome.runtime.onConnect.addListener(function(port) {
     port.onMessage.addListener(function(msg) {
-        alert(msg.commentsCount);
+        //alert(msg.commentsCount)
+        document.getElementById("commentsCounter").innerHTML = msg.commentsCount;
     });
   });
-  
+
 document.getElementById('loadcomments').addEventListener('click', injectTheScript);

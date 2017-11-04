@@ -12,12 +12,14 @@ function clickLoadMoreComments() {
     var timerId = setTimeout(function clickAgain() {
         if (document.body.contains(loadMoreCommentsButton)){
         loadMoreCommentsButton.click();
+        port.postMessage({commentsCount: 
+            (document.getElementsByClassName("_ezgzd").length-1).toString()});
         }
         timerId = setTimeout(clickAgain, 1000);
         if (!document.body.contains(loadMoreCommentsButton)){
             clearTimeout(timerId);
             port.postMessage({commentsCount: 
-                (document.getElementsByClassName("_ezgzd").length-1).toString()});
+                (document.getElementsByClassName("_ezgzd").length-1).toString()+" comments founded!"});
         }
       });
 }
