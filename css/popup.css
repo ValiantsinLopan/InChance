@@ -48,7 +48,7 @@ body {
     text-overflow: ellipsis;
     white-space: nowrap;
 }
-  .download{
+  .download, .getWinner {
     display: block;
     margin: 0 auto;
     text-align: center;

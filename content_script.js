@@ -1,11 +1,5 @@
 var port = chrome.runtime.connect();
-
-port.onMessage.addListener(function(msg) {
-    if (msg.question == "Who's there?")
-      port.postMessage({answer: "Madame"});
-    else if (msg.question == "Madame who?")
-      port.postMessage({answer: "Madame... Bovary"});
-  });
+var comments = document.getElementsByClassName("_ezgzd");
 
 function clickLoadMoreComments() {
     var loadMoreCommentsButton = document.getElementsByClassName("_m3m1c _1s3cd")[0];
@@ -18,8 +12,12 @@ function clickLoadMoreComments() {
         timerId = setTimeout(clickAgain, 1000);
         if (!document.body.contains(loadMoreCommentsButton)){
             clearTimeout(timerId);
-            port.postMessage({commentsCount: 
-                (document.getElementsByClassName("_ezgzd").length-1).toString()+" comments founded!"});
+            port.postMessage(
+                {
+                    commentsCount: (comments.length-1).toString()+" comments founded!",
+                    message : "finished"
+                }
+            );
         }
       });
 }
@@ -30,9 +28,13 @@ function randomInteger(min, max) {
     return rand;
 }
 function getRandomComment(){
-    var comments = document.getElementsByClassName("_ezgzd");
     var commentsCount = comments.length - 1;
     var randomCommentIndex = randomInteger(1, commentsCount);
     return comments[randomCommentIndex];
 }
+
+port.onMessage.addListener(function(msg) {
+    if (msg.message == "getWinner")
+        alert("lol");
+  });
 clickLoadMoreComments();
