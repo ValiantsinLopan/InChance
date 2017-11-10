@@ -15,7 +15,8 @@ function clickLoadMoreComments() {
             port.postMessage(
                 {
                     commentsCount: (comments.length-1).toString()+" comments founded!",
-                    message : "finished"
+                    message : "finished",
+                    comments : JSON.stringify(Array.from(comments).map(a => a.innerHTML), null, '\t')
                 }
             );
         }
@@ -31,6 +32,10 @@ function getRandomComment(){
     var commentsCount = comments.length - 1;
     var randomCommentIndex = randomInteger(1, commentsCount);
     return comments[randomCommentIndex];
+}
+function getCommentsOnJSON(){
+    var innerHtmls = Array.from(comments).map(a => a.innerHTML);
+    var str = JSON.stringify(innerHtmls);
 }
 
 port.onMessage.addListener(function(msg) {

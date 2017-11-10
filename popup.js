@@ -9,6 +9,7 @@ chrome.runtime.onConnect.addListener(function(port) {
         document.getElementById("commentsCounter").innerHTML = msg.commentsCount;
         if (msg.message == "finished"){
             document.getElementById("loadcomments").innerHTML = "Comments uploaded";
+            console.log(msg.comments);
         }
 
     });
