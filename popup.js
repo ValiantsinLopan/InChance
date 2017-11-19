@@ -26,5 +26,16 @@ chrome.runtime.onConnect.addListener(function(port) {
 $('#loadcomments').on('click', injectTheScript);
 $('#getSingleWinner').click( function(){
     document.getElementById("singleWinner").innerHTML = innerHTMLs[randomInteger(1, innerHTMLs.length)];
-    console.log(document.getElementsByClassName('_2g7d5').href);
+    $("a[href]").each(function()
+    { 
+       this.href = this.href.replace("chrome-extension://"+ this.hostname,"https://www.instagram.com");
+    });
 });
+
+//Open links in new tab
+$(document).ready(function(){
+    $('body').on('click', 'a', function(){
+      chrome.tabs.create({url: $(this).attr('href')});
+      return false;
+    });
+ });
