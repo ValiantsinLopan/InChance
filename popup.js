@@ -12,15 +12,30 @@ function injectTheScript() {
     });
 }
 
-chrome.runtime.onConnect.addListener(function(port) {
-    port.onMessage.addListener(function(msg) {
-        document.getElementById("commentsCounter").innerHTML = msg.commentsCount;
-        if (msg.message == "finished"){
-            document.getElementById("loadcomments").innerHTML = "Comments uploaded";
-            innerHTMLs = JSON.parse(msg.comments);
-        }
-
+function getBackgroundImg(){
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+        chrome.tabs.executeScript(tabs[0].id, {file: "getPageInfo.js"});
     });
+}
+
+chrome.runtime.onConnect.addListener(function(port) {
+    if(port.name!= "start"){
+        port.onMessage.addListener(function(msg) {
+            document.getElementById("commentsCounter").innerHTML = msg.commentsCount;
+            if (msg.message == "finished"){
+                document.getElementById("loadcomments").innerHTML = "Comments uploaded";
+                innerHTMLs = JSON.parse(msg.comments);
+            }
+    
+        });
+    } else {
+        port.onMessage.addListener(function(msg) {
+            console.log(msg.imgLink);
+            console.log($("body").css('background'));
+            document.body.style.backgroundImage = "url('" + msg.imgLink + "')";
+        })
+    }
+    
   });
 
 $('#loadcomments').on('click', injectTheScript);
@@ -34,6 +49,7 @@ $('#learnWinners').click( function(){
 
 //Open links in new tab
 $(document).ready(function(){
+    getBackgroundImg();
     $('body').on('click', 'a', function(){
       chrome.tabs.create({url: $(this).attr('href')});
       return false;

@@ -22,9 +22,4 @@ function clickLoadMoreComments() {
         }
       });
 }
-
-port.onMessage.addListener(function(msg) {
-    if (msg.message == "getWinner")
-        alert("lol");
-  });
 clickLoadMoreComments();
