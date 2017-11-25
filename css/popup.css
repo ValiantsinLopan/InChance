@@ -1,6 +1,7 @@
 body {
     font-family: sans-serif;
     /*background-image: url(https://scontent-frt3-2.cdninstagram.com/t51.2885-15/e35/13181387_1722496231342238_1837202579_n.jpg);*/
+    background-position: center;
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#97d4ee', endColorstr='#0890c5',GradientType=1 );
     overflow: hidden;
     width: 800px;
