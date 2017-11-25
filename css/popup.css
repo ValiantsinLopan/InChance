@@ -1,5 +1,6 @@
 body {
     font-family: sans-serif;
+    background-image:url(https://scontent-frt3-2.cdninstagram.com/t51.2885-15/e35/23969550_1723558094385985_1557425450144235520_n.jpg);
     background: #cbcbf1;
     background: -moz-linear-gradient(45deg, #97d4ee 0%,#019DE1 25%,#017CCA 50%,#1f5ad1 75%,#0890c5 100%); 
     background: -webkit-linear-gradient(45deg, #97d4ee 0%,#019DE1 25%,#017CCA 50%,#1f5ad1 75%,#0890c5 100%); 
@@ -32,7 +33,7 @@ body {
     letter-spacing: 0.2px;
     margin: auto;
 }
-  .btn {
+  .btncstm {
     border: 1px solid #dbdbdb;
     border-radius: 3px;
     background: 0 0;
@@ -52,6 +53,11 @@ body {
     display: block;
     margin: 0 auto;
     text-align: center;
+    background: 0 0;
+    color: #dbdbdb;
+    font-family: "Segoe UI";
+    font-size: 18px;
+    font-weight: 600;
   }
 #commentsCounter{
   color: #dbdbdb;

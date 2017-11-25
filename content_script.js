@@ -23,21 +23,6 @@ function clickLoadMoreComments() {
       });
 }
 
-function randomInteger(min, max) {
-    var rand = min - 0.5 + Math.random() * (max - min + 1)
-    rand = Math.round(rand);
-    return rand;
-}
-function getRandomComment(){
-    var commentsCount = comments.length - 1;
-    var randomCommentIndex = randomInteger(1, commentsCount);
-    return comments[randomCommentIndex];
-}
-function getCommentsOnJSON(){
-    var innerHtmls = Array.from(comments).map(a => a.innerHTML);
-    var str = JSON.stringify(innerHtmls);
-}
-
 port.onMessage.addListener(function(msg) {
     if (msg.message == "getWinner")
         alert("lol");

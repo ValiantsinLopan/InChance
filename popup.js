@@ -24,7 +24,7 @@ chrome.runtime.onConnect.addListener(function(port) {
   });
 
 $('#loadcomments').on('click', injectTheScript);
-$('#getSingleWinner').click( function(){
+$('#learnWinners').click( function(){
     document.getElementById("singleWinner").innerHTML = innerHTMLs[randomInteger(1, innerHTMLs.length)];
     $("a[href]").each(function()
     { 
