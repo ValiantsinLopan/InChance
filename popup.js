@@ -33,6 +33,7 @@ chrome.runtime.onConnect.addListener(function(port) {
             console.log(msg.imgLink);
             console.log($("body").css('background'));
             document.body.style.backgroundImage = "url('" + msg.imgLink + "')";
+            //document.getElementsByClassName('logoText')[0].textContent = "#"+msg.accountName;
         })
     }
     

@@ -1,12 +1,6 @@
 body {
     font-family: sans-serif;
     /*background-image: url(https://scontent-frt3-2.cdninstagram.com/t51.2885-15/e35/13181387_1722496231342238_1837202579_n.jpg);*/
-    
-    
-    /*background: #cbcbf1;
-    background: -moz-linear-gradient(45deg, #97d4ee 0%,#019DE1 25%,#017CCA 50%,#1f5ad1 75%,#0890c5 100%); 
-    background: -webkit-linear-gradient(45deg, #97d4ee 0%,#019DE1 25%,#017CCA 50%,#1f5ad1 75%,#0890c5 100%); 
-    background: linear-gradient(45deg, #97d4ee 0%,#019DE1 25%,#017CCA 50%,#1f5ad1 75%,#0890c5 100%);*/
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#97d4ee', endColorstr='#0890c5',GradientType=1 );
     overflow: hidden;
     width: 800px;
@@ -17,7 +11,7 @@ body {
   height: 2rem;
 }
 .mask{
-  background:linear-gradient(rgba(0,0,0, 0.5), rgba(0,0,0, 0.5));
+  background:linear-gradient(rgba(0,0,0, 0.6), rgba(0,0,0, 0.6));
 }
 .header {
     height: 10rem;
