@@ -1,6 +1,6 @@
 body {
     font-family: sans-serif;
-    /*background-image: url(https://scontent-frt3-2.cdninstagram.com/t51.2885-15/e35/13181387_1722496231342238_1837202579_n.jpg);*/
+    background-image: url(http://podrobnosti.ua/media/pictures/2015/10/30/thumbs/740x415/v-etu-pjatnitsu-pole-chudes-vyhodit-v-efir-rovno-25-god-podrjad-kadr-iz-video_rect_8d40de7cfa137c6ac9d9fcd7378620c0.jpg);
     background-position: center;
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#97d4ee', endColorstr='#0890c5',GradientType=1 );
     overflow: hidden;
@@ -88,3 +88,14 @@ body {
   margin-top: -5px;
   padding-top: 5px;
 }
+#video-background {
+  /*  making the video fullscreen  */
+    position: fixed;
+    right: 0; 
+    bottom: 0;
+    min-width: 100%; 
+    min-height: 100%;
+    width: auto; 
+    height: auto;
+    z-index: -100;
+  }

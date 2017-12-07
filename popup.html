@@ -16,13 +16,13 @@
     </div>
     
     <div class="download">
-            <p><a id="commentsCounter">Press "Download all comments" to get all comments from post</a></p>
+            <p><a id="commentsCounter">Press "Download all comments" to get all comments from the post</a></p>
             <button type="button" class="btncstm" id="loadcomments">Download all comments</button>
     </div>
     <div class="getWinner">
         <div class="numbers-of">
             <label class="col-form-label">Number of winners: </label>
-            <select class="custom-select my-3" required>
+            <select class="custom-select my-3" id="winners" required>
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -30,7 +30,7 @@
                 <option>5</option>
             </select>
             <label class="col-form-label">Number of marked users: </label>
-            <select class="custom-select my-3" required>
+            <select class="custom-select my-3" id="marked" required>
                 <option>0</option>
                 <option>1</option>
                 <option>2</option>
@@ -39,10 +39,11 @@
                 <option>5</option>
             </select>
         </div>
-        <textarea class="form-control getWinner" id="exampleFormControlTextarea1" rows="1" cols="" placeholder="String that comment should contains"></textarea>
+        <textarea class="form-control getWinner" id="textarea" rows="1" cols="" placeholder="String that comment should contains"></textarea>
         <button type="button" class="btncstm" id="learnWinners">Learn the winners!</button>
         <div id="singleWinner"></div>
     </div>
+    <!--<iframe id="video-background" src="https://www.youtube.com/embed/ZZMubT8zMAQ?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&playlist=ZZMubT8zMAQ" frameborder="0" allowfullscreen></iframe>-->
     <script src="popup.js"></script>
     </div>
 </body>
