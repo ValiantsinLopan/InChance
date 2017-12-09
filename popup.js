@@ -1,12 +1,34 @@
 var innerHTMLs = new Array();
-var contentString = document.getElementById("textarea").value;
+var contentString;
 var winnersCount = document.getElementById("winners").value;
-var markedCount = document.getElementById("marked").value;
+var markedCount;
 
 function randomInteger(min, max) {
     var rand = min - 0.5 + Math.random() * (max - min + 1)
     rand = Math.round(rand);
     return rand;
+}
+
+function markedUsersIn(str){
+    var reg = /@(\w+)/gm;
+    var matches = str.match(reg);
+    return new Array(matches);
+}
+
+function getСontenders(){
+    contentString = document.getElementById("textarea").value;
+    markedCount = document.getElementById("marked").value;
+    console.log(markedCount);
+    console.log(contentString);
+    console.log(innerHTMLs);
+    var contenders = new Array();
+
+    innerHTMLs.forEach(function(item, i, arr) {
+        if (markedUsersIn(item).length == markedCount){
+            contenders.push(item);
+        }
+    });
+    return contenders;    
 }
 
 function injectTheScript() {
@@ -22,7 +44,7 @@ function getBackgroundImg(){
 }
 
 chrome.runtime.onConnect.addListener(function(port) {
-    if(port.name!= "start"){
+    if(port.name != "start"){
         port.onMessage.addListener(function(msg) {
             document.getElementById("commentsCounter").innerHTML = msg.commentsCount;
             if (msg.message == "finished"){
@@ -33,10 +55,7 @@ chrome.runtime.onConnect.addListener(function(port) {
         });
     } else {
         port.onMessage.addListener(function(msg) {
-            console.log(msg.imgLink);
-            console.log($("body").css('background'));
             document.body.style.backgroundImage = "url('" + msg.imgLink + "')";
-            //document.getElementsByClassName('logoText')[0].textContent = "#"+msg.accountName;
         })
     }
     
@@ -49,6 +68,7 @@ $('#learnWinners').click( function(){
     { 
        this.href = this.href.replace("chrome-extension://"+ this.hostname,"https://www.instagram.com");
     });
+    console.log(getСontenders());
 });
 
 //Open links in new tab
