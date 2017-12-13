@@ -1,7 +1,8 @@
 var innerHTMLs = new Array();
-var contentString;
+var contentString = document.getElementById("textarea").value;
 var winnersCount = document.getElementById("winners").value;
-var markedCount;
+var markedCount = document.getElementById("marked").value;
+
 
 function randomInteger(min, max) {
     var rand = min - 0.5 + Math.random() * (max - min + 1)
@@ -17,7 +18,6 @@ function markedUsersIn(str){
 
 function getСontenders(){
     contentString = document.getElementById("textarea").value;
-    markedCount = document.getElementById("marked").value;
     console.log(markedCount);
     console.log(contentString);
     console.log(innerHTMLs);
