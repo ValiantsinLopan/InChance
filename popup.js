@@ -1,7 +1,5 @@
 var innerHTMLs = new Array();
-var contentString = document.getElementById("textarea").value;
 var winnersCount = document.getElementById("winners").value;
-var markedCount = document.getElementById("marked").value;
 
 
 function randomInteger(min, max) {
@@ -17,15 +15,24 @@ function markedUsersIn(str){
 }
 
 function getСontenders(){
-    contentString = document.getElementById("textarea").value;
+    var markedCount = document.getElementById("marked").value;
+    var contentString = document.getElementById("textarea").value;
     console.log(markedCount);
     console.log(contentString);
     console.log(innerHTMLs);
     var contenders = new Array();
 
     innerHTMLs.forEach(function(item, i, arr) {
-        if (markedUsersIn(item).length == markedCount){
-            contenders.push(item);
+        console.log(markedUsersIn(item)[0]);
+        if (markedCount > 0){
+            if (markedUsersIn(item)[0] != null && markedUsersIn(item)[0].length >= markedCount && item.includes(contentString)){
+                contenders.push(item);
+            }
+        }
+        else {
+            if (item.includes(contentString)){
+                contenders.push(item);
+            }
         }
     });
     return contenders;    
