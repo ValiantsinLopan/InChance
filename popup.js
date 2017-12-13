@@ -1,11 +1,23 @@
 var innerHTMLs = new Array();
-var winnersCount = document.getElementById("winners").value;
-
 
 function randomInteger(min, max) {
     var rand = min - 0.5 + Math.random() * (max - min + 1)
     rand = Math.round(rand);
     return rand;
+}
+
+function getRandom(arr, n) {
+    var result = new Array(n),
+        len = arr.length,
+        taken = new Array(len);
+    if (n > len)
+        throw new RangeError("getRandom: more elements taken than available");
+    while (n--) {
+        var x = Math.floor(Math.random() * len);
+        result[n] = arr[x in taken ? taken[x] : x];
+        taken[x] = --len;
+    }
+    return result;
 }
 
 function markedUsersIn(str){
@@ -70,12 +82,15 @@ chrome.runtime.onConnect.addListener(function(port) {
 
 $('#loadcomments').on('click', injectTheScript);
 $('#learnWinners').click( function(){
-    document.getElementById("singleWinner").innerHTML = innerHTMLs[randomInteger(1, innerHTMLs.length)];
+    var winnersCount = document.getElementById("winners").value;
+    var winners = getRandom(getСontenders(), winnersCount);     
+    document.getElementById("singleWinner").innerHTML = winners;
     $("a[href]").each(function()
     { 
        this.href = this.href.replace("chrome-extension://"+ this.hostname,"https://www.instagram.com");
     });
     console.log(getСontenders());
+    console.log(winners);
 });
 
 //Open links in new tab
