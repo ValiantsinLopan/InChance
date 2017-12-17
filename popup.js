@@ -10,9 +10,8 @@ function getRandom(arr, n) {
     var result = new Array(n),
         len = arr.length,
         taken = new Array(len);
-    if (n > len){
-        n=len;
-    }
+    n = (n > len) ? len : n;
+
     while (n--) {
         var x = Math.floor(Math.random() * len);
         result[n] = arr[x in taken ? taken[x] : x];
@@ -30,9 +29,6 @@ function markedUsersIn(str){
 function getСontenders(){
     var markedCount = document.getElementById("marked").value;
     var contentString = document.getElementById("textarea").value;
-    console.log(markedCount);
-    console.log(contentString);
-    console.log(innerHTMLs);
     var contenders = new Array();
 
     innerHTMLs.forEach(function(item, i, arr) {
@@ -69,7 +65,7 @@ function injectTheScript() {
     });
 }
 
-function getBackgroundImg(){
+function getPageInfo(){
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
         chrome.tabs.executeScript(tabs[0].id, {file: "getPageInfo.js"});
     });
@@ -87,11 +83,18 @@ chrome.runtime.onConnect.addListener(function(port) {
         });
     } else {
         port.onMessage.addListener(function(msg) {
-            document.body.style.backgroundImage = "url('" + msg.imgLink + "')";
+            var pageUrl  = msg.url;
+            console.log(msg);
+            if (msg.imgLink != "")document.body.style.backgroundImage = "url('" + msg.imgLink + "')";
+            if (!pageUrl.includes("https://www.instagram.com/p")){
+            document.getElementById('mask').style.visibility = 'hidden';
+
+            }
+            
         })
     }
     
-  });
+});
 
 $('#loadcomments').on('click', injectTheScript);
 $('#learnWinners').click( function(){
@@ -105,9 +108,9 @@ $('#learnWinners').click( function(){
     });
 });
 
-//Open links in new tab
 $(document).ready(function(){
-    getBackgroundImg();
+    getPageInfo();
+    //Open links in new tab
     $('body').on('click', 'a', function(){
       chrome.tabs.create({url: $(this).attr('href')});
       return false;
