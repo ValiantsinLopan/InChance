@@ -14,7 +14,7 @@ function clickLoadMoreComments() {
             clearTimeout(timerId);
             port.postMessage(
                 {
-                    commentsCount: (comments.length-1).toString()+" comments founded!",
+                    commentsCount: (comments.length-1).toString()+" comments found!",
                     message : "finished",
                     comments : JSON.stringify(Array.from(comments).map(a => a.innerHTML), null, '\t')
                 }

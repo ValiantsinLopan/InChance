@@ -51,6 +51,15 @@ function getСontenders(){
     return contenders;    
 }
 
+function createWinnersUl(winners){
+    var list = document.createElement('ul');
+    for(var i = 0; i < winners.length; i++) {
+        var item = document.createElement('li');
+        item.innerHTML = winners[i];
+        list.appendChild(item);
+    }
+    return list;
+}
 function injectTheScript() {
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
         chrome.tabs.executeScript(tabs[0].id, {file: "content_script.js"});
@@ -83,15 +92,13 @@ chrome.runtime.onConnect.addListener(function(port) {
 
 $('#loadcomments').on('click', injectTheScript);
 $('#learnWinners').click( function(){
-    var winnersCount = document.getElementById("winners").value;
+    var winnersCount = document.getElementById("winnersCount").value;
     var winners = getRandom(getСontenders(), winnersCount);     
-    document.getElementById("singleWinner").innerHTML = winners;
+    document.getElementById("winners").appendChild(createWinnersUl(winners));
     $("a[href]").each(function()
     { 
        this.href = this.href.replace("chrome-extension://"+ this.hostname,"https://www.instagram.com");
     });
-    console.log(getСontenders());
-    console.log(winners);
 });
 
 //Open links in new tab
