@@ -53,8 +53,11 @@ function getСontenders(){
 
 function createWinnersUl(winners){
     var list = document.createElement('ul');
+    list.id += "winnersList";
+
     for(var i = 0; i < winners.length; i++) {
         var item = document.createElement('li');
+        //item.classList += "list-group-item";
         item.innerHTML = winners[i];
         list.appendChild(item);
     }
@@ -92,6 +95,7 @@ chrome.runtime.onConnect.addListener(function(port) {
 
 $('#loadcomments').on('click', injectTheScript);
 $('#learnWinners').click( function(){
+    $('#winnersList').remove();
     var winnersCount = document.getElementById("winnersCount").value;
     var winners = getRandom(getСontenders(), winnersCount);     
     document.getElementById("winners").appendChild(createWinnersUl(winners));
