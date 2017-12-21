@@ -1,6 +1,6 @@
 body {
     font-family: sans-serif;
-    background-image: url(http://podrobnosti.ua/media/pictures/2015/10/30/thumbs/740x415/v-etu-pjatnitsu-pole-chudes-vyhodit-v-efir-rovno-25-god-podrjad-kadr-iz-video_rect_8d40de7cfa137c6ac9d9fcd7378620c0.jpg);
+    background-image: url(/images/background.png);
     background-position: center;
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#97d4ee', endColorstr='#0890c5',GradientType=1 );
     overflow: hidden;

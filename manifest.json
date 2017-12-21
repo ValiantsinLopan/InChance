@@ -1,6 +1,6 @@
 {
     "manifest_version": 2,
-    "name": "Insta Raffle",
+    "name": "InChance",
     "description": "Play prizes using comments in Instagram",
     "version": "0.1",
     "permissions": ["tabs",
@@ -9,7 +9,7 @@
         "declarativeContent"
     ], 
     "background": {
-        "scripts": ["jquery.js", "background.js"]
+        "scripts": ["jquery.js"]
     },
     "browser_action":{
         "default_icon": "/images/128.png",
