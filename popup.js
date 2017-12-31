@@ -71,6 +71,21 @@ function getPageInfo(){
     });
 }
 
+function getCookies() {
+    var cookieToReturn = {};
+    chrome.cookies.get({url: "https://www.instagram.com", name: 'ds_user_id'}, function(cookie) {
+      if(cookie) { cookieToReturn.ds_user_id = cookie.value; }
+      chrome.cookies.get({url: "https://www.instagram.com", name: 'sessionid'}, function(cookie) {
+        if(cookie) { cookieToReturn.sessionid = cookie.value; }
+        chrome.cookies.get({url: "https://www.instagram.com", name: 'csrftoken'}, function(cookie) {
+          if(cookie) { cookieToReturn.csrftoken = cookie.value; }
+        });
+      });
+    });
+    console.log(cookieToReturn);
+    return cookieToReturn;
+}
+
 chrome.runtime.onConnect.addListener(function(port) {
     if(port.name != "start"){
         port.onMessage.addListener(function(msg) {
@@ -109,6 +124,7 @@ $('#learnWinners').click( function(){
 });
 
 $(document).ready(function(){
+    getCookies();
     getPageInfo();
     //Open links in new tab
     $('body').on('click', 'a', function(){
